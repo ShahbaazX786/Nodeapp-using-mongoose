@@ -1,0 +1,24 @@
+{
+  "name": "nodeapp-using-mongoose",
+  "version": "1.0.0",
+  "description": "Nodejs app (written in Javascript(es6) via Express) will connect with mongodb and we will execute mongodb commands(written mongoose ODM)  via express  all in app.js file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShahbaazX786/Nodeapp-using-mongoose.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShahbaazX786/Nodeapp-using-mongoose/issues"
+  },
+  "homepage": "https://github.com/ShahbaazX786/Nodeapp-using-mongoose#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  }
+}
