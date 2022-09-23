@@ -12,13 +12,13 @@ mongoose.connect("mongodb://0.0.0.0:27017/fruitsDB",{useNewUrlParser:true,useUni
     }
 }); 
 
-const fruitSchema = new mongoose.Schema({
+const fruitSchema = new mongoose.Schema({ // schema is nothing but blueprint.
     name:String,
     rating:Number,
     review:String
 });
 
-const Fruit = mongoose.model("Fruit",fruitSchema);
+const Fruit = mongoose.model("Fruit",fruitSchema); //model (wireframe) of the schema(blueprint)
 
 const fruit =  new Fruit({
     name:"Apple",
@@ -26,17 +26,48 @@ const fruit =  new Fruit({
     review:"Damn boii dis fruit is bussin"
 });
 
-fruit.save();
+fruit.save(); //saves the object as a document in the database.
 
-const personSchema = mongoose.Schema({
-    name:String,
-    age:Number
+// just created this  below schema, model and document as a practice
+// const personSchema = mongoose.Schema({
+//     name:String,
+//     age:Number
+// });
+
+// const Person = mongoose.model("Person",personSchema);
+
+// const person = new Person({
+//     name:"Jack",
+//     age:21
+// });
+// person.save();
+
+
+// 3 fruit objects created
+const kiwi = new Fruit({
+    name:"Kiwi",
+    rating:10,
+    review:"Damn boii this fruit is bussing aswell"
 });
 
-const Person = mongoose.model("Person",personSchema);
-
-const person = new Person({
-    name:"Jack",
-    age:21
+const orange = new Fruit({
+    name:"Orange",
+    rating:9,
+    review:"Boii this fruit is soar as hell"
 });
-person.save();
+
+const banana = new Fruit({
+    name:"Banana",
+    rating:10,
+    review:"Great fruit for potassium,make a dizzy person eat one of these and he will be up in no time."
+});
+
+// inserting all fruit objects as documents into the database using mongoose.model. check docs for more mongoose.model methods
+Fruit.insertMany([kiwi,orange,banana],function(err){
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log("All Bussin fruits added to the database my boii");
+    }
+});
