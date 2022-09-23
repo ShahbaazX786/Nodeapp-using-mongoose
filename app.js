@@ -18,3 +18,6 @@ const fruit =  new Fruit({
     rating:10,
     review:"Damn boii dis fruit is bussin"
 });
+
+fruit.save();
+
