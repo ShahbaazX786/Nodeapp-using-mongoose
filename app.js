@@ -10,3 +10,5 @@ const fruitSchema = new mongoose.Schema({
     rating:Number,
     review:String
 });
+
+const Fruit = mongoose.model("Fruit",fruitSchema);
