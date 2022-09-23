@@ -12,3 +12,9 @@ const fruitSchema = new mongoose.Schema({
 });
 
 const Fruit = mongoose.model("Fruit",fruitSchema);
+
+const fruit =  new Fruit({
+    name:"Apple",
+    rating:10,
+    review:"Damn boii dis fruit is bussin"
+});
