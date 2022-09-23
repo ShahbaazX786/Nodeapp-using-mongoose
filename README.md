@@ -17,4 +17,4 @@ Ex:
 
 - Then check them in the cmd by running mongod --version and mongosh and if they give anything other than ```-``` and ```>``` at bottom of the cmd then you messed up something.
 
--Also now ```mongoose.connect('mongodb://localhost:27017/myapp');``` is not working instead use ```mongoose.connect('mongodb://0.0.0.0:27017/myapp');```
+- Also now ```mongoose.connect('mongodb://localhost:27017/myapp');``` is not working instead use ```mongoose.connect('mongodb://0.0.0.0:27017/myapp');```
