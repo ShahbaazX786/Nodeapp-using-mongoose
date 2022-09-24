@@ -29,18 +29,18 @@ const fruit =  new Fruit({
 // fruit.save(); //saves the object as a document in the database.
 
 // just created this  below schema, model and document as a practice
-// const personSchema = mongoose.Schema({
-//     name:String,
-//     age:Number
-// });
+const personSchema = mongoose.Schema({
+    name:String,
+    age:Number
+});
 
-// const Person = mongoose.model("Person",personSchema);
+const Person = mongoose.model("Person",personSchema);
 
-// const person = new Person({
-//     name:"Jack",
-//     age:21
-// });
-// person.save();
+const person = new Person({
+    name:"Jack",
+    age:21
+});
+person.save();
 
 
 // 3 fruit objects created
@@ -93,5 +93,15 @@ Fruit.find(function(err,fruits){
             }
         });
 
+    }
+});
+
+// update a document using the updateOne() method of the mongoose model API, also we are tapping into the people collection using the Person model and first parameter of this method is the selector next parameter is the setInterval(what value to update), then an optional parameter is callback function which returns the status of the updateOne method.
+Person.updateOne({name:'Jack'},{age:52},function(err){
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log("document sucessfully updated!");
     }
 });
