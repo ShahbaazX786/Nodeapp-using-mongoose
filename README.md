@@ -76,7 +76,7 @@ Person.updateOne({name:'Jack'},{age:52},function(err){
 
 ###### Delete function (Delete)
 ```
-Person.deleteOne({name:'Jack'},function(err){ 
+Person.deleteOne({name:'Jack'},function(err){
     if(err){
         console.log(err);
     }
@@ -85,5 +85,53 @@ Person.deleteOne({name:'Jack'},function(err){
     }
 });
 ```
+
+---
+###### Relationship b/w collections (Embedding documents)
+
+- FruitSchema used to create a blueprint of the fruits collection.
+```
+const fruitSchema = new mongoose.Schema({
+    name:String,
+    rating:Number,
+    review:String
+});
+```
+
+- Model is used to map the document into the fruits collection and also to run the CRUD methods on the collection.
+
+```
+const Fruit = mongoose.model("fruit",fruitSchema);
+```
+
+```
+const personSchema = mongoose.Schema({
+    name:String,
+    age:Number,
+    favoritefruit:fruitSchema //[embedding done here in the schema]
+});
+```
+```
+const Person = mongoose.model("Person",personSchema); 
+```
+- Creating a mango document and saving it to the fruits database
+```
+const mango = new Fruit({
+    name:"mango",
+    rating:10,
+    review:"King of fruit"
+});
+mango.save();
+```
+- Creating a person document and saving it to the people database
+```
+const person = new Person({
+    name:"Amy",
+    age:12,
+    favoritefruit:mango //[embedding done here]
+});
+person.save();
+```
+
 ---
 >PS: Checkout the app.js it has comments for detailed understanding.
