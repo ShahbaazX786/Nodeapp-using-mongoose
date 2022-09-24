@@ -72,4 +72,16 @@ Fruit.insertMany([kiwi,orange,banana],function(err){
     }
 });
 
-
+// funtion to find/fetch all documents in the fruits Collection using the Fruit model
+Fruit.find(function(err,fruits){
+    if(err){
+        console.log(err);
+    }
+    else{
+        fruits.forEach(function(fruit){
+            console.log(fruit.name);
+            //    console.log(fruits); //fetches all documents in json format.
+        });
+        
+    }
+});
