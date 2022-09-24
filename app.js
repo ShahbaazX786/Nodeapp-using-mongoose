@@ -36,11 +36,11 @@ const personSchema = mongoose.Schema({
 
 const Person = mongoose.model("Person",personSchema);
 
-const person = new Person({
-    name:"Jack",
-    age:21
-});
-person.save();
+// const person = new Person({
+//     name:"Jack",
+//     age:21
+// });
+// person.save();
 
 
 // 3 fruit objects created
@@ -63,45 +63,55 @@ const banana = new Fruit({
 });
 
 // inserting all fruit objects as documents into the database using mongoose.model. check docs for more mongoose.model methods
-Fruit.insertMany([kiwi,orange,banana],function(err){
-    if(err){
-        console.log(err);
-    }
-    else{
-        console.log("All Bussin fruits added to the database my boii");
-    }
-});
+// Fruit.insertMany([kiwi,orange,banana],function(err){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         console.log("All Bussin fruits added to the database my boii");
+//     }
+// }); commenting this as this is adding duplicate entries into the db.
 
 // funtion to find/fetch all documents in the fruits Collection using the Fruit model
-Fruit.find(function(err,fruits){
-    if(err){
-        console.log(err);
-    }
-    else{
-        fruits.forEach(function(fruit){
-            console.log(fruit.name);
-            //    console.log(fruits); //fetches all documents in json format.
-        });
+// Fruit.find(function(err,fruits){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         fruits.forEach(function(fruit){
+//             console.log(fruit.name);
+//             //    console.log(fruits); //fetches all documents in json format.
+//         });
 
-         // just a simple db connection close method which is given a callback for console logging. you can also use mongoose.disconnect()/mongoose.connection.close(); both works fine.
-        mongoose.disconnect(function(err){
-            if(err){
-                console.log(err);
-            }
-            else{
-                console.log('connection to mongodb closed');
-            }
-        });
+//          // just a simple db connection close method which is given a callback for console logging. you can also use mongoose.disconnect()/mongoose.connection.close(); both works fine.
+//         mongoose.disconnect(function(err){
+//             if(err){
+//                 console.log(err);
+//             }
+//             else{
+//                 console.log('connection to mongodb closed');
+//             }
+//         });
 
-    }
-});
+//     }
+// }); commenting this as this is unnecessary in deleteOne method.
 
 // update a document using the updateOne() method of the mongoose model API, also we are tapping into the people collection using the Person model and first parameter of this method is the selector next parameter is the setInterval(what value to update), then an optional parameter is callback function which returns the status of the updateOne method.
-Person.updateOne({name:'Jack'},{age:52},function(err){
+// Person.updateOne({name:'Jack'},{age:52},function(err){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         console.log("document sucessfully updated!");
+//     }
+// }); commenting this as im about to write the delete funtion.
+
+
+Person.deleteOne({name:'Jack'},function(err){ //just replace the deleteOne method with deleteMany method and it will delete all the matching Jack records
     if(err){
         console.log(err);
     }
     else{
-        console.log("document sucessfully updated!");
+        console.log("document sucessfully deleted!");
     }
 });
