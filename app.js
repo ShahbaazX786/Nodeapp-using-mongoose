@@ -30,18 +30,33 @@ const fruit =  new Fruit({
 
 // just created this  below schema, model and document as a practice
 // uncomment if you want to try the update and the delete methods.
-// const personSchema = mongoose.Schema({
-//     name:String,
-//     age:Number
-// });
+const personSchema = mongoose.Schema({
+    name:String,
+    age:Number,
+    favoritefruit:fruitSchema
+});
 
-// const Person = mongoose.model("Person",personSchema); 
+const Person = mongoose.model("Person",personSchema); 
 
 // const person = new Person({
 //     name:"Jack",
 //     age:21
 // });
 // person.save();
+
+const mango = new Fruit({
+    name:"mango",
+    rating:10,
+    review:"King of fruit"
+});
+mango.save();
+
+const person = new Person({
+    name:"Amy",
+    age:12,
+    favoritefruit:mango
+});
+person.save();
 
 
 
@@ -80,14 +95,14 @@ const banana = new Fruit({
 
 // uncomment if you want to insert the 3 fruit documents into the db.
 // inserting all fruit objects as documents into the database using mongoose.model. check docs for more mongoose.model methods
-Fruit.insertMany([kiwi,orange,banana],function(err){
-    if(err){
-        console.log(err);
-    }
-    else{
-        console.log("All Bussin fruits added to the database my boii");
-    }
-}); 
+// Fruit.insertMany([kiwi,orange,banana],function(err){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         console.log("All Bussin fruits added to the database my boii");
+//     }
+// }); 
 // commenting this as this is adding duplicate entries into the db.
 
 
@@ -102,29 +117,28 @@ Fruit.insertMany([kiwi,orange,banana],function(err){
 
 
 // funtion to find/fetch all documents in the fruits Collection using the Fruit model
-Fruit.find(function(err,fruits){
-    if(err){
-        console.log(err);
-    }
-    else{
-        fruits.forEach(function(fruit){
-            console.log(fruit.name);
-            //    console.log(fruits); //fetches all documents in json format.
-        });
+// Fruit.find(function(err,fruits){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         fruits.forEach(function(fruit){
+//             console.log(fruit.name);
+//             //    console.log(fruits); //fetches all documents in json format.
+//         });
 
-         // just a simple db connection close method which is given a callback for console logging. you can also use mongoose.disconnect()/mongoose.connection.close(); both works fine.
-        mongoose.disconnect(function(err){
-            if(err){
-                console.log(err);
-            }
-            else{
-                console.log('connection to mongodb closed');
-            }
-        });
+//          // just a simple db connection close method which is given a callback for console logging. you can also use mongoose.disconnect()/mongoose.connection.close(); both works fine.
+//         mongoose.disconnect(function(err){
+//             if(err){
+//                 console.log(err);
+//             }
+//             else{
+//                 console.log('connection to mongodb closed');
+//             }
+//         });
 
-    }
-}); 
-// commenting this as this is unnecessary in deleteOne method.
+//     }
+// }); 
 
 
 
