@@ -82,6 +82,16 @@ Fruit.find(function(err,fruits){
             console.log(fruit.name);
             //    console.log(fruits); //fetches all documents in json format.
         });
+
+         // just a simple db connection close method which is given a callback for console logging. you can also use mongoose.disconnect()/mongoose.connection.close(); both works fine.
+        mongoose.disconnect(function(err){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log('connection to mongodb closed');
+            }
+        });
         
     }
 });
