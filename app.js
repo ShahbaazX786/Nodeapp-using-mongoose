@@ -1,7 +1,7 @@
 // jshint esversion:6
 const mongoose = require('mongoose');
 
-// const URL = "mongodb://localhost:27017/fruitsDB";
+// const URL = "mongodb://localhost:27017/fruitsDB"; // this sheet not working now after version 5+
 
 mongoose.connect("mongodb://0.0.0.0:27017/fruitsDB",{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{//freaking sheet mongodb://0.0.0.0:27017/myapp somehow this sheet is working and mongodb://localhost:27017/ this sheet is not working in mongodb 6+.
     if(err){
@@ -26,7 +26,7 @@ const fruit =  new Fruit({
     review:"Damn boii dis fruit is bussin"
 });
 
-fruit.save(); //saves the object as a document in the database.
+// fruit.save(); //saves the object as a document in the database.
 
 // just created this  below schema, model and document as a practice
 // const personSchema = mongoose.Schema({
@@ -71,3 +71,5 @@ Fruit.insertMany([kiwi,orange,banana],function(err){
         console.log("All Bussin fruits added to the database my boii");
     }
 });
+
+
