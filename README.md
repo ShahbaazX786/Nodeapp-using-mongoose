@@ -1,6 +1,8 @@
-# Nodeapp-using-mongoose
-Nodejs app (written in Javascript(es6) via Express) will connect with mongodb and we will execute mongodb commands(written mongoose ODM)  via express  all in app.js file.
+## Nodeapp-using-mongoose
 
+> Nodejs app (written in Javascript(es6) via Express) will connect with mongodb and we will execute mongodb commands(written mongoose ODM)  via express  all in app.js file.
+
+---
 
 #### Steps to install MongoDB v6+:
 - Boii this thing is getting way complicated than ever..
@@ -18,3 +20,70 @@ Ex:
 - Then check them in the cmd by running mongod --version and mongosh and if they give anything other than ```-``` and ```>``` at bottom of the cmd then you messed up something.
 
 - Also now ```mongoose.connect('mongodb://localhost:27017/myapp');``` is not working instead use ```mongoose.connect('mongodb://0.0.0.0:27017/myapp');```
+
+---
+
+#### Mondodb CRUD functions using Mongoose (ODM)
+
+
+###### Insert function (Create)
+```
+Fruit.insertMany([kiwi,orange,banana],function(err){
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log("All Bussin fruits added to the database my boii");
+    }
+}); 
+```
+
+###### Find function (Read)
+```
+Fruit.find(function(err,fruits){
+    if(err){
+        console.log(err);
+    }
+    else{
+        fruits.forEach(function(fruit){
+            console.log(fruit.name);
+        });
+
+        mongoose.disconnect(function(err){
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log('connection to mongodb closed');
+            }
+        });
+
+    }
+}); 
+```
+
+###### Update function (Update)
+```
+Person.updateOne({name:'Jack'},{age:52},function(err){
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log("document sucessfully updated!");
+    }
+}); 
+```
+
+###### Delete function (Delete)
+```
+Person.deleteOne({name:'Jack'},function(err){ 
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log("document sucessfully deleted!");
+    }
+});
+```
+---
+>PS: Checkout the app.js it has comments for detailed understanding.
