@@ -18,7 +18,7 @@ const fruitSchema = new mongoose.Schema({ // schema is nothing but blueprint.
     review:String
 });
 
-const Fruit = mongoose.model("Fruit",fruitSchema); //model (wireframe) of the schema(blueprint)
+const Fruit = mongoose.model("fruit",fruitSchema); //model (wireframe) of the schema(blueprint)
 
 const fruit =  new Fruit({
     name:"Apple",
@@ -92,6 +92,6 @@ Fruit.find(function(err,fruits){
                 console.log('connection to mongodb closed');
             }
         });
-        
+
     }
 });
