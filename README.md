@@ -1,5 +1,8 @@
 ## Nodeapp-using-mongoose
 
+>This project will help me and anyone to understand how mongoose (ODM) works with the mongodb in the nodejs environment (node+express) in the app.js file.
+
+
 > Nodejs app (written in Javascript(es6) via Express) will connect with mongodb and we will execute mongodb commands(written mongoose ODM)  via express  all in app.js file.
 
 ---
